@@ -8,6 +8,8 @@ import { styled } from "styled-components";
 
 import { Link } from "react-router-dom";
 
+import { Helmet } from "react-helmet-async";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -115,6 +117,9 @@ const FacebookLogin = styled.div`
 function Login() {
   return (
     <Container>
+      <Helmet>
+        <title>Instagram</title>
+      </Helmet>
       <Wrapper>
         <TopBox>
           <div>
@@ -124,7 +129,7 @@ function Login() {
           <form>
             <Input type="text" name="username" placeholder="유저네임" />
             <Input type="password" name="password" placeholder="비밀번호" />
-            <Button type="submit" value="로그인 하기" />
+            <Button type="submit" value="가입" />
           </form>
 
           <Separator>
@@ -140,7 +145,7 @@ function Login() {
         </TopBox>
 
         <BottomBox>
-          <span>계정이 없으신가요?</span>
+          <span>계정이 있으신가요?</span>
           <Link to="/signup">가입하기</Link>
         </BottomBox>
       </Wrapper>

@@ -15,7 +15,7 @@ import { useState } from "react";
 import { HelmetProvider } from "react-helmet-async";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
   return (
@@ -37,7 +37,14 @@ function App() {
               }
             />
             <Route path={routes.signup} element={<SignUp />} />
-            <Route path={routes.profile} element={<Profile />} />
+            <Route
+              path={routes.profile}
+              element={
+                <Layout>
+                  <Profile />
+                </Layout>
+              }
+            />
             <Route path={routes.chatting} element={<Chatting />} />
           </Routes>
         </Router>

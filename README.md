@@ -50,11 +50,52 @@ font-awesome
 (2) 함수형 화면 screens 생성
 (3) routes 생성 및 적용
 (4) css reset & global theme 적용
-===
 (5) jsconfig.json 생성
 (6) React Helmet 적용
 
-Scrren 생성하기
+### 1. 화면 만들기
+
 (1) Login
 (2) SignUp
-(3) Home
+(3) Header
+(4) Home
+(5) Feed
+-FeedHeader
+-FeedImg
+-FeedAction
+(6) Comments
+(7) Profile
+-ProfileHeader
+-ProfileContents
+
+### 2. 클릭 이벤트 설정
+
+- Login (React-Form)
+- SignUp (React-Hook-Form)
+
+### 3. Django 서버 세팅
+
+- REST API 생성
+
+### 4. API 연동
+
+- Login Token 부분 처리
+
+##### API LIST
+
+1. Login
+
+- Login API
+
+2. SignUp
+
+- SignUp API
+
+3. Home
+
+- Feed API
+
+4. Profile
+
+- UserProfile API
+- Feed API

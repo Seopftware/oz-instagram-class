@@ -1,6 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { styled } from "styled-components";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import {
+  faHome,
+  faPaperPlane,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -10,6 +15,7 @@ const HeaderContainer = styled.header`
   padding: 18px 0;
   border-bottom: 1px solid black;
 `;
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -36,16 +42,17 @@ function Header() {
         <Column>
           <FontAwesomeIcon icon={faInstagram} size="2x" />
         </Column>
+
         <Column>
           <IconsContainer>
             <Icon>
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
+              <FontAwesomeIcon icon={faHome} size="2x" />
             </Icon>
             <Icon>
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
+              <FontAwesomeIcon icon={faPaperPlane} size="2x" />
             </Icon>
             <Icon>
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
+              <FontAwesomeIcon icon={faUser} size="2x" />
             </Icon>
           </IconsContainer>
         </Column>

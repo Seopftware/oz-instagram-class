@@ -1,14 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
   faInstagram,
   faFacebookSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { styled } from "styled-components";
-
 import { Link } from "react-router-dom";
-
 import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form";
 
 const Container = styled.div`
   display: flex;
@@ -70,7 +68,7 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.div`
+const FBButton = styled.div`
   width: 100%;
   border: none;
   border-radius: 3px;
@@ -80,6 +78,19 @@ const Button = styled.div`
   text-align: center;
   padding: 8px 0px;
   font-weight: 600;
+`;
+
+const Button = styled.input`
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  margin-top: 12px;
+  background-color: #0095f6;
+  color: white;
+  text-align: center;
+  padding: 8px 0px;
+  font-weight: 600;
+  opacity: ${(props) => (props.disabled ? "0.5" : "1")};
 `;
 
 const Separator = styled.div`
@@ -122,6 +133,24 @@ const SubTitle = styled.span`
 `;
 
 function SignUp() {
+  const {
+    register,
+    handleSubmit,
+    formState,
+    formState: { errors },
+  } = useForm({
+    mode: "onChange", // onBlur
+  });
+
+  const onSubmitValid = (data) => {
+    // API CALL
+    console.log("data valid", data);
+  };
+
+  const onSubmitInvalid = (data) => {
+    console.log("data invalid", data);
+  };
+
   return (
     <Container>
       <Helmet>
@@ -134,12 +163,12 @@ function SignUp() {
           </div>
           <SubTitle>친구들의 사진과 동영상을 보려면 가입하세요.</SubTitle>
 
-          <Button>
+          <FBButton>
             <FacebookLogin>
               <FontAwesomeIcon icon={faFacebookSquare} />
               <span>Facebook으로 로그인</span>
             </FacebookLogin>
-          </Button>
+          </FBButton>
 
           <Separator>
             <div></div>
@@ -147,14 +176,44 @@ function SignUp() {
             <div></div>
           </Separator>
 
-          <Form>
-            <Input type="text" name="phone" placeholder="휴대폰 번호" />
-            <Input type="tex" name="name" placeholder="성명" />
-            <Input type="text" name="username" placeholder="사용자 이름" />
-            <Input type="password" name="password" placeholder="비밀번호" />
-            <Button type="submit" value="SignUp">
-              가입하기
-            </Button>
+          <Form onSubmit={handleSubmit(onSubmitValid, onSubmitInvalid)}>
+            <Input
+              type="text"
+              placeholder="휴대폰 번호"
+              {...register("phone", { required: true, minLength: 12 })}
+            />
+            {errors.phone && errors.phone.type === "required" && (
+              <p>휴대폰 번호를 입력해주세요.</p>
+            )}
+            {errors.phone && errors.phone.type === "minLength" && (
+              <p>휴대폰 번호는 최소 12자 이상이어야 합니다.</p>
+            )}
+            <Input
+              type="tex"
+              placeholder="성명"
+              {...register("name", {
+                required: true,
+              })}
+            />
+            <Input
+              type="text"
+              placeholder="유저네임"
+              {...register("username", {
+                required: true,
+              })}
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="비밀번호"
+              {...register("password", { required: true })}
+            />
+
+            <Button
+              type="submit"
+              value="가입하기"
+              disabled={!formState.isValid}
+            />
           </Form>
         </TopBox>
 

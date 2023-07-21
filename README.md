@@ -68,16 +68,20 @@ font-awesome
 -ProfileHeader
 -ProfileContents
 
-### 2. 클릭 이벤트 설정
+### 2. Form 이벤트 설정
 
 - Login (React-Form)
 - SignUp (React-Hook-Form)
 
-### 3. Django 서버 세팅
+### 3. Component 분할 작업
+
+- Component 단위로 분할
+
+### 4. Django 서버 세팅
 
 - REST API 생성
 
-### 4. API 연동
+### 5. API 연동
 
 - Login Token 부분 처리
 

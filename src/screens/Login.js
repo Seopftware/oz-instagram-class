@@ -1,14 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
   faInstagram,
   faFacebookSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { styled } from "styled-components";
-
 import { Link } from "react-router-dom";
-
 import { Helmet } from "react-helmet-async";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -115,6 +113,24 @@ const FacebookLogin = styled.div`
 `;
 
 function Login() {
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChange = (event) => {
+    const { name, value } = event.currentTarget;
+    console.log(name, value);
+
+    if (name === "username") {
+      setUserName(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <Container>
       <Helmet>
@@ -126,9 +142,21 @@ function Login() {
             <FontAwesomeIcon icon={faInstagram} size="3x" />
           </div>
 
-          <form>
-            <Input type="text" name="username" placeholder="유저네임" />
-            <Input type="password" name="password" placeholder="비밀번호" />
+          <form onSubmit={onSubmit}>
+            <Input
+              type="text"
+              name="username"
+              placeholder="유저네임"
+              onChange={onChange}
+              required
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="비밀번호"
+              onChange={onChange}
+              required
+            />
             <Button type="submit" value="가입" />
           </form>
 

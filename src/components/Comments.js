@@ -20,20 +20,22 @@ const CommentAuthor = styled.span`
 
 const CommentContent = styled.span``;
 
-function Comments() {
+function Comments({ author, caption, reviews, reviewsNum }) {
   return (
     <CommentsContainer>
       <CommentContainer>
-        <CommentAuthor>작성자</CommentAuthor>
-        <CommentContent>작성 내용</CommentContent>
+        <CommentAuthor>{author}</CommentAuthor>
+        <CommentContent>{caption}</CommentContent>
       </CommentContainer>
 
-      <CommentCount>댓글 N개 모두 보기</CommentCount>
+      <CommentCount>댓글 {reviewsNum}개 모두 보기</CommentCount>
 
-      <CommentContainer>
-        <CommentAuthor>작정자</CommentAuthor>
-        <CommentContent>작성 내용</CommentContent>
-      </CommentContainer>
+      {reviews?.map((review) => (
+        <CommentContainer>
+          <CommentAuthor>{review.user.username}</CommentAuthor>
+          <CommentContent>{review.payload}</CommentContent>
+        </CommentContainer>
+      ))}
     </CommentsContainer>
   );
 }

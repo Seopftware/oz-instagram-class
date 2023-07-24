@@ -13,7 +13,7 @@ function Home() {
           "https://mblogthumb-phinf.pstatic.net/MjAyMDA0MTBfMjQ4/MDAxNTg2NDgyNTMyMTQ1.dtZ7rR07L9U8giv9ea4juxflcnz18ZoF17_CnW6NHVsg.uPXYgoyZyQCrdSRsGNJYyMSQbhnK0Nh1BN4xUfOq_E4g.PNG.zencstory/0.png?type=w800",
       },
       likesNum: 100,
-      commentNumber: 33,
+      reviewsNum: 33,
       isLiked: false,
       reviews: [
         {
@@ -45,7 +45,7 @@ function Home() {
           "https://mblogthumb-phinf.pstatic.net/MjAyMDA0MTBfMjQ4/MDAxNTg2NDgyNTMyMTQ1.dtZ7rR07L9U8giv9ea4juxflcnz18ZoF17_CnW6NHVsg.uPXYgoyZyQCrdSRsGNJYyMSQbhnK0Nh1BN4xUfOq_E4g.PNG.zencstory/0.png?type=w800",
       },
       likesNum: 123,
-      commentNumber: 33,
+      reviewsNum: 33,
       isLiked: true,
     },
     {
@@ -59,7 +59,7 @@ function Home() {
           "https://mblogthumb-phinf.pstatic.net/MjAyMDA0MTBfMjQ4/MDAxNTg2NDgyNTMyMTQ1.dtZ7rR07L9U8giv9ea4juxflcnz18ZoF17_CnW6NHVsg.uPXYgoyZyQCrdSRsGNJYyMSQbhnK0Nh1BN4xUfOq_E4g.PNG.zencstory/0.png?type=w800",
       },
       likesNum: 93,
-      commentNumber: 33,
+      reviewsNum: 33,
       isLiked: false,
     },
   ];

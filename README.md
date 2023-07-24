@@ -73,17 +73,18 @@ font-awesome
 - Login (React-Form)
 - SignUp (React-Hook-Form)
 
-### 3. Component 분할 작업
+### 3. Component 분할 작업 (1시간)
 
 - Component 단위로 분할
 
-### 4. Django 서버 세팅
+### 4. Django 서버 세팅 (2시간)
 
 - REST API 생성
 
-### 5. API 연동
+### 5. API 연동 (5시간)
 
 - Login Token 부분 처리
+- 데이터 주고 받기
 
 ##### API LIST
 

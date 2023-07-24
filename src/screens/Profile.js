@@ -130,18 +130,6 @@ function Profile() {
             </Icon>
           </InnerContainer>
         </Content>
-        <Content bg="https://www.urbanbrush.net/web/wp-content/uploads/edd/2019/09/urbanbrush-20190904021843269545.png">
-          <InnerContainer>
-            <Icon>
-              <FontAwesomeIcon icon={faHeart} />
-              좋아요수
-            </Icon>
-            <Icon>
-              <FontAwesomeIcon icon={faComment} />
-              리뷰수
-            </Icon>
-          </InnerContainer>
-        </Content>
       </ContentsContainer>
     </ProfileContainer>
   );

@@ -97,7 +97,6 @@ const Separator = styled.div`
   width: 100%;
   margin: 20px 0px 30px 0px;
   text-transform: uppercase;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,18 +132,26 @@ const SubTitle = styled.span`
 `;
 
 function SignUp() {
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState,
+  //   formState: { errors },
+  // } = useForm({
+  //   mode: "onChange", // onBlur
+  // });
+
   const {
     register,
     handleSubmit,
     formState,
     formState: { errors },
-  } = useForm({
-    mode: "onChange", // onBlur
-  });
+  } = useForm({ mode: "onBlur" });
 
   const onSubmitValid = (data) => {
-    // API CALL
+    // API 호출
     console.log("data valid", data);
+    // axios.post("https://oz.com/api/v1/signup", data)
   };
 
   const onSubmitInvalid = (data) => {
@@ -180,33 +187,41 @@ function SignUp() {
             <Input
               type="text"
               placeholder="휴대폰 번호"
+              // {...register("phone", { required: true, minLength: 12 })}
               {...register("phone", { required: true, minLength: 12 })}
             />
-            {errors.phone && errors.phone.type === "required" && (
+            {/* {errors.phone && errors.phone.type === "required" && (
               <p>휴대폰 번호를 입력해주세요.</p>
             )}
             {errors.phone && errors.phone.type === "minLength" && (
               <p>휴대폰 번호는 최소 12자 이상이어야 합니다.</p>
-            )}
+            )} */}
             <Input
               type="tex"
               placeholder="성명"
-              {...register("name", {
-                required: true,
-              })}
+              {...register("name", { required: true, minLength: 3 })}
             />
+
+            {errors.name && errors.name.type === "required" && (
+              <p style={{ color: "red" }}>이름은 반드시 입력되어야 합니다..</p>
+            )}
+
+            {errors.name && errors.name.type === "minLength" && (
+              <p style={{ color: "red" }}>
+                이름은 최소 3글자 이상 입력 해주셔야 합니다.
+              </p>
+            )}
+
             <Input
               type="text"
               placeholder="유저네임"
-              {...register("username", {
-                required: true,
-              })}
+              {...register("username", { required: true, minLength: 3 })}
             />
             <Input
               type="password"
               name="password"
               placeholder="비밀번호"
-              {...register("password", { required: true })}
+              {...register("password", { required: true, minLength: 4 })}
             />
 
             <Button

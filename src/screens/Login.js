@@ -113,6 +113,7 @@ const FacebookLogin = styled.div`
 `;
 
 function Login() {
+  // useState(): 컴포넌트에서 바뀌는 변수 또는 값을 관리해주는 함수
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -127,8 +128,14 @@ function Login() {
     }
   };
 
+  // 패스워드가 4개 이상의 문자를 필요로 한다.
   const onSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // 새로고침 방지
+    console.log("onSubmit");
+
+    if (password.length < 5) {
+      alert("비밀번호가 짧습니다.");
+    }
   };
 
   return (

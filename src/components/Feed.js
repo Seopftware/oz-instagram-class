@@ -130,7 +130,13 @@ function Feed({
             </Column>
           </FeedActions>
 
-          <Comments />
+          <Comments
+            key={id}
+            author={user.username}
+            caption={caption}
+            reviews={reviews}
+            reviewsNum={reviewsNum}
+          />
         </FeedActionContainer>
       </Wrapper>
     </FeedContainer>

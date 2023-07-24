@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
   faInstagram,
   faFacebookSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { styled } from "styled-components";
-
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -113,18 +113,58 @@ const FacebookLogin = styled.div`
 `;
 
 function Login() {
+  // useState(): 컴포넌트에서 바뀌는 변수 또는 값을 관리해주는 함수
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChange = (event) => {
+    const { name, value } = event.currentTarget;
+    console.log(name, value);
+
+    if (name === "username") {
+      setUserName(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
+
+  // 패스워드가 4개 이상의 문자를 필요로 한다.
+  const onSubmit = (event) => {
+    event.preventDefault(); // 새로고침 방지
+    console.log("onSubmit");
+
+    if (password.length < 5) {
+      alert("비밀번호가 짧습니다.");
+    }
+  };
+
   return (
     <Container>
+      <Helmet>
+        <title>Instagram</title>
+      </Helmet>
       <Wrapper>
         <TopBox>
           <div>
             <FontAwesomeIcon icon={faInstagram} size="3x" />
           </div>
 
-          <form>
-            <Input type="text" name="username" placeholder="유저네임" />
-            <Input type="password" name="password" placeholder="비밀번호" />
-            <Button type="submit" value="로그인 하기" />
+          <form onSubmit={onSubmit}>
+            <Input
+              type="text"
+              name="username"
+              placeholder="유저네임"
+              onChange={onChange}
+              required
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="비밀번호"
+              onChange={onChange}
+              required
+            />
+            <Button type="submit" value="가입" />
           </form>
 
           <Separator>
@@ -140,7 +180,7 @@ function Login() {
         </TopBox>
 
         <BottomBox>
-          <span>계정이 없으신가요?</span>
+          <span>계정이 있으신가요?</span>
           <Link to="/signup">가입하기</Link>
         </BottomBox>
       </Wrapper>
